@@ -1,9 +1,12 @@
 // SFML_template.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
+#include "Game.h"
 
 int main()
 {
+	sf::RenderWindow win(sf::VideoMode(1200, 600), "Side scroll", sf::Style::Close | sf::Style::Titlebar);
 
+	Game game(win);
+	game.Run();
 }
