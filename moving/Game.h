@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Player.h"
 
 class Game
 {
@@ -19,6 +20,8 @@ private:
 	float m_deltatime;
 	double m_backgroundScroll;
 	double m_backgroundScrollSpeed;
+
+	Player m_player;
 
 	void PollEvent();
 	void ChangeBackground();

@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game(sf::RenderWindow& window)
-	:m_window(window), m_event(sf::Event()), m_deltatime(60.f), m_backgroundScrollSpeed(1.2f), m_backgroundScroll(0)
+	:m_window(window), m_event(sf::Event()), m_deltatime(60.f), m_backgroundScrollSpeed(.5f), m_backgroundScroll(0)
 {
 	m_backgroundTexture.loadFromFile("Textures/gameBack.jpg");
 	m_backgroundTexture.setSmooth(true);
@@ -50,6 +50,7 @@ void Game::Render()
 	m_window.clear();
 
 	m_window.draw(m_backgroundSprite);
+	m_player.Render(m_window);
 
 	m_window.display();
 }
