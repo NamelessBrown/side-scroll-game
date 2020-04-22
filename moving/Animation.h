@@ -19,7 +19,7 @@ public:
 private:
 	void Advance();
 private:
-	static constexpr float m_holdTime = 0.1f;
+	static constexpr float m_holdTime = 5.5f;
 	float m_time = 0.0f;
 	int m_numberOfFrames = 0;
 	int m_iFrame = 0;
