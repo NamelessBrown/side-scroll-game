@@ -3,6 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+/*
+	Special thanks to ChiliTomatoNoodle!
+	Thank you ChiliTomatoNoodle for this blessed code! I changed it up a bit to match what I needed!
+*/
+
 class Animation
 {
 public:
