@@ -29,9 +29,6 @@ void Game::PollEvent()
 		case sf::Event::Closed:
 			m_window.close();
 			break;
-		case sf::Event::KeyPressed:
-			m_player.Movement(m_deltatime, m_event);
-			break;
 		}
 	}
 }
