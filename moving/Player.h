@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Animation.h"
 
 class Player
 {
@@ -15,6 +16,8 @@ private:
 
 	int m_counter; //Used for the sprite sheet
 	float m_speed;
+
+	Animation m_animation;
 
 	void Movement(float dt);
 };
