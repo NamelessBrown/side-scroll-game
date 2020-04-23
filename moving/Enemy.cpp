@@ -31,11 +31,13 @@ Enemy::Enemy()
 	}
 
 	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition(50.f, 50.f);
+	m_sprite.setScale(-1.0f, 1.0f);
+	m_sprite.setPosition(940.f, 460.f);
 }
 
 void Enemy::Update(float dt)
 {
+	m_sprite.move(-2.2f * dt, 0);
 	m_animation.Update(dt);
 	m_animation.Apply(m_sprite);
 }
