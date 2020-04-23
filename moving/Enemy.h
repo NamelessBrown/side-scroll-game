@@ -3,6 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include "Animation.h"
 
+/*  
+	TODO: make a health system depented on the type of zombie
+	TODO: make a speed system that is depented on the type of zombie
+*/
+
 class Enemy
 {
 public:
