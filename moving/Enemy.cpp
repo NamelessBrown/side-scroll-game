@@ -10,7 +10,7 @@ Enemy::Enemy()
 	std::uniform_int_distribution<int> m_distribution(0, 4);
 
 	//m_type = (ZomebieType)m_distribution(rng);
-	m_type = ZomebieType::fat;
+	m_type = ZomebieType::oneManJand;
 
 	switch (m_type)
 	{
@@ -22,6 +22,9 @@ Enemy::Enemy()
 		break;
 	case ZomebieType::skinny:
 		m_animation = Animation(m_texture, 4, 0, 128 * 2, 128, 128);
+		break;
+	case ZomebieType::oneManJand:
+		m_animation = Animation(m_texture, 4, 0, 128 * 3, 128, 128);
 		break;
 	}
 
