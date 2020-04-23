@@ -16,6 +16,7 @@ private:
 		WalkingRight, Fighting, Standing, WalkingLeft, Count
 	};
 
+	void Movement(float dt);
 private:
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
@@ -25,7 +26,5 @@ private:
 
 	Animation m_animations[int(AnimationIndex::Count)];
 	AnimationIndex m_currentAnimation = AnimationIndex::WalkingRight;
-
-	void Movement(float dt);
 };
 
