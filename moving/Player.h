@@ -8,6 +8,8 @@ class Player
 public:
 	Player();
 
+	const sf::Sprite& GetPlayer() const { return m_sprite; }
+
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
 private:
@@ -17,11 +19,12 @@ private:
 	};
 
 	void Movement(float dt);
+	void CheckBounds();
 private:
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 
-	int m_counter; //Used for the sprite sheet
+	//int m_counter; //Used for the sprite sheet
 	float m_speed;
 	bool m_movingLeft;
 

@@ -3,12 +3,11 @@
 Player::Player()
 	:m_speed(4.5f), m_movingLeft(false)
 {
-	m_counter = 0;
+	//m_counter = 0;
 	m_texture.loadFromFile("Textures/playerSheet.png");
 
 
 	m_animations[int(AnimationIndex::Walking)] = Animation(m_texture, 3, 46 * 3, 50 * 3, 46, 50);
-	//m_animations[int(AnimationIndex::WalkingLeft)] = Animation(m_texture, 3, 46 * 3, 50 * 3, 46, 50);
 	m_animations[int(AnimationIndex::Fighting)] = Animation(m_texture, 8, 0, 0, 46, 50);
 	m_animations[int(AnimationIndex::Standing)] = Animation(m_texture, 1, 0, 0, 46, 50);
 	m_animations[int(AnimationIndex::StandingLeft)] = Animation(m_texture, 1, 0, 0, 46, 50);
@@ -32,6 +31,8 @@ void Player::Update(float dt)
 
 	m_animations[int(m_currentAnimation)].Update(dt);
 	m_animations[int(m_currentAnimation)].Apply(m_sprite);
+
+	CheckBounds();
 }
 
 void Player::Render(sf::RenderWindow& window)
@@ -70,4 +71,12 @@ void Player::Movement(float dt)
 		m_currentAnimation = AnimationIndex::Fighting;
 	}
 
+}
+
+void Player::CheckBounds()
+{
+	if (m_sprite.getPosition().x < 5 || m_sprite.getPosition().x > 1000)
+	{
+		m_sprite.setPosition(15.f, 540.f);
+	}
 }
