@@ -13,7 +13,7 @@ public:
 private:
 	enum class AnimationIndex
 	{
-		WalkingRight, Fighting, Standing, WalkingLeft, Count
+		Walking, Fighting, Standing, StandingLeft, FightingLeft, Count
 	};
 
 	void Movement(float dt);
@@ -23,8 +23,9 @@ private:
 
 	int m_counter; //Used for the sprite sheet
 	float m_speed;
+	bool m_movingLeft;
 
 	Animation m_animations[int(AnimationIndex::Count)];
-	AnimationIndex m_currentAnimation = AnimationIndex::WalkingRight;
+	AnimationIndex m_currentAnimation = AnimationIndex::Walking;
 };
 
