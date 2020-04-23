@@ -15,7 +15,7 @@ public:
 private:
 	enum class AnimationIndex
 	{
-		Walking, Fighting, Standing, StandingLeft, FightingLeft, Count
+		Walking, Fighting, Standing, FightingLeft, Count
 	};
 
 	void Movement(float dt);
