@@ -44,6 +44,7 @@ void Game::Update()
 	PollEvent();
 	ChangeBackground();
 	m_player.Update(m_deltatime);
+	m_enemies.Update(m_deltatime);
 }
 
 void Game::Render()
@@ -52,6 +53,7 @@ void Game::Render()
 
 	m_window.draw(m_backgroundSprite);
 	m_player.Render(m_window);
+	m_enemies.Render(m_window);
 
 	m_window.display();
 }

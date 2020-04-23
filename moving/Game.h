@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include "Enemy.h"
 
 class Game
 {
@@ -27,5 +28,6 @@ private:
 	double m_backgroundScrollSpeed;
 
 	Player m_player;
+	Enemy m_enemies;
 };
 
