@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
+#include <memory>
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "Enemy.h"
@@ -28,6 +30,6 @@ private:
 	double m_backgroundScrollSpeed;
 
 	Player m_player;
-	Enemy m_enemies;
+	std::vector<std::unique_ptr<Enemy>> m_enemies;
 };
 

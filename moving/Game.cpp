@@ -8,6 +8,9 @@ Game::Game(sf::RenderWindow& window)
 
 	m_backgroundSprite.setTexture(m_backgroundTexture);
 	m_backgroundSprite.setPosition(0.f, 0.f);
+
+	m_enemies.emplace_back(new Enemy());
+	m_enemies.emplace_back(new Enemy());
 }
 
 void Game::Run()
@@ -44,7 +47,11 @@ void Game::Update()
 	PollEvent();
 	ChangeBackground();
 	m_player.Update(m_deltatime);
-	m_enemies.Update(m_deltatime);
+
+	for (auto& e : m_enemies)
+	{
+		e->Update(m_deltatime);
+	}
 }
 
 void Game::Render()
@@ -53,7 +60,11 @@ void Game::Render()
 
 	m_window.draw(m_backgroundSprite);
 	m_player.Render(m_window);
-	m_enemies.Render(m_window);
+
+	for (auto& e : m_enemies)
+	{
+		e->Render(m_window);
+	}
 
 	m_window.display();
 }
