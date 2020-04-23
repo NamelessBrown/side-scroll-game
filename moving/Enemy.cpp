@@ -9,8 +9,7 @@ Enemy::Enemy()
 	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> m_distribution(0, 4);
 
-	//m_type = (ZomebieType)m_distribution(rng);
-	m_type = ZomebieType::oneManJand;
+	m_type = (ZomebieType)m_distribution(rng);
 
 	switch (m_type)
 	{
@@ -25,6 +24,9 @@ Enemy::Enemy()
 		break;
 	case ZomebieType::oneManJand:
 		m_animation = Animation(m_texture, 4, 0, 128 * 3, 128, 128);
+		break;
+	default:
+		m_animation = Animation(m_texture, 4, 0, 0, 128, 128);
 		break;
 	}
 
