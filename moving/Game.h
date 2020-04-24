@@ -11,12 +11,14 @@ class Game
 {
 public:
 	Game(sf::RenderWindow& window);
+	~Game();
 
 	void Run();
 private:
 	void PollEvent();
 	void ChangeBackground();
 	void Update();
+	void Collision();
 	void Render();
 private:
 	sf::RenderWindow& m_window;
@@ -29,6 +31,7 @@ private:
 	float m_deltatime;
 	double m_backgroundScroll;
 	double m_backgroundScrollSpeed;
+	int m_enemiesSpawner;
 
 	Player m_player;
 	std::vector<std::unique_ptr<Enemy>> m_enemies;
