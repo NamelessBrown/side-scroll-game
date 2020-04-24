@@ -4,13 +4,14 @@ Game::Game(sf::RenderWindow& window)
 	:m_window(window), m_event(sf::Event()), m_deltatime(60.f), m_backgroundScrollSpeed(.5f), m_backgroundScroll(0)
 {
 	m_backgroundTexture.loadFromFile("Textures/gameBack.jpg");
+	m_enemyTexture.loadFromFile("Textures/zombies.png");
 	m_backgroundTexture.setSmooth(true);
 
 	m_backgroundSprite.setTexture(m_backgroundTexture);
 	m_backgroundSprite.setPosition(0.f, 0.f);
 
-	m_enemies.emplace_back(new Enemy());
-	m_enemies.emplace_back(new Enemy());
+	m_enemies.emplace_back(new Enemy(m_enemyTexture));
+	m_enemies.emplace_back(new Enemy(m_enemyTexture));
 }
 
 void Game::Run()

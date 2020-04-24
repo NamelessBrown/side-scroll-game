@@ -22,6 +22,7 @@ private:
 	sf::RenderWindow& m_window;
 	sf::Event m_event;
 	sf::Texture m_backgroundTexture;
+	sf::Texture m_enemyTexture;
 	sf::Sprite m_backgroundSprite;
 	sf::Clock m_clock;
 
