@@ -11,7 +11,7 @@
 class Enemy
 {
 public:
-	Enemy();
+	Enemy(sf::Texture& texture);
 
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
@@ -22,7 +22,7 @@ private:
 	};
 private:
 	sf::Sprite m_sprite;
-	sf::Texture m_texture;
+	sf::Texture& m_texture;
 
 	ZomebieType m_type;
 	Animation m_animation;

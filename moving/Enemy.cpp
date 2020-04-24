@@ -1,10 +1,9 @@
 #include "Enemy.h"
 #include <random>
 
-Enemy::Enemy()
+Enemy::Enemy(sf::Texture& texture)
+	:m_texture(texture)
 {
-	m_texture.loadFromFile("Textures/zombies.png");
-
 	std::random_device rd;
 	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> m_distribution(0, 4);
