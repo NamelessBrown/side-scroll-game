@@ -12,6 +12,9 @@ class Enemy
 {
 public:
 	Enemy(sf::Texture& texture);
+	~Enemy();
+
+	const sf::Sprite& GetEnemy() const { return m_sprite; }
 
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);

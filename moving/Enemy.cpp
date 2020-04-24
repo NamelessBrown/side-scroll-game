@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include <random>
+#include <iostream>
 
 Enemy::Enemy(sf::Texture& texture)
 	:m_texture(texture)
@@ -32,6 +33,11 @@ Enemy::Enemy(sf::Texture& texture)
 	m_sprite.setTexture(m_texture);
 	m_sprite.setScale(-1.0f, 1.0f);
 	m_sprite.setPosition(940.f, 460.f);
+}
+
+Enemy::~Enemy()
+{
+
 }
 
 void Enemy::Update(float dt)
