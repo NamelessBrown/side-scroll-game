@@ -6,7 +6,7 @@
 int main()
 {
 	sf::RenderWindow win(sf::VideoMode(1000, 600), "Side scroll", sf::Style::Close | sf::Style::Titlebar);
-
+	
 	Game game(win);
 	game.Run();
 }
