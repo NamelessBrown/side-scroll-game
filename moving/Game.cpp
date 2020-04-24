@@ -60,10 +60,24 @@ void Game::Update()
 	ChangeBackground();
 	m_player.Update(m_deltatime);
 
-	for (unsigned x = 0; x < m_enemies.size(); x++)
+	for (std::vector<std::unique_ptr<Enemy>>::iterator iter = m_enemies.begin(); iter != m_enemies.end();)
 	{
-		m_enemies[x]->Update(m_deltatime);
+		if (Collision::AxisAlignedBoundingBox(m_player.GetPlayer(), iter->get()->GetEnemy()))
+		{
+			iter = m_enemies.erase(iter);
+		}
+		else
+		{
+			iter->get()->Update(m_deltatime);
+			iter++;
+		}
 	}
+
+	if (m_enemies.empty())
+	{
+		m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
+	}
+
 }
 
 void Game::Render()
