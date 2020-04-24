@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "Enemy.h"
+#include "ResourceHolder.h"
 
 class Game
 {
@@ -21,10 +22,10 @@ private:
 	void Collision();
 	void Render();
 private:
+	ResourceHolder m_resourceHolder;
+
 	sf::RenderWindow& m_window;
 	sf::Event m_event;
-	sf::Texture m_backgroundTexture;
-	sf::Texture m_enemyTexture;
 	sf::Sprite m_backgroundSprite;
 	sf::Clock m_clock;
 

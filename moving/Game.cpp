@@ -4,16 +4,15 @@
 Game::Game(sf::RenderWindow& window)
 	:m_window(window), m_event(sf::Event()), m_deltatime(60.f), m_backgroundScrollSpeed(.5f), m_backgroundScroll(0), m_enemiesSpawner(1)
 {
-	m_backgroundTexture.loadFromFile("Textures/gameBack.jpg");
-	m_enemyTexture.loadFromFile("Textures/zombies.png");
-	m_backgroundTexture.setSmooth(true);
 
-	m_backgroundSprite.setTexture(m_backgroundTexture);
+	m_backgroundSprite.setTexture(m_resourceHolder.getTexture("Textures/gameBack.jpg"));
 	m_backgroundSprite.setPosition(0.f, 0.f);
+
+	m_player = Player(m_resourceHolder.getTexture("Textures/playerSheet.png"));
 
 	for (int i = 0; i < m_enemiesSpawner; i++)
 	{
-		m_enemies.emplace_back(new Enemy(m_enemyTexture));
+		m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
 	}
 }
 
@@ -78,7 +77,7 @@ void Game::Collision()
 		{
 			m_enemies[i].reset();
 			m_enemies.erase(m_enemies.begin() + i);
-			m_enemies.emplace_back(new Enemy(m_enemyTexture));
+			m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
 		}
 	}
 }
