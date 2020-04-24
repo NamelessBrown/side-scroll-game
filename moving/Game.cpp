@@ -60,24 +60,9 @@ void Game::Update()
 	ChangeBackground();
 	m_player.Update(m_deltatime);
 
-	Collision();
-
 	for (unsigned x = 0; x < m_enemies.size(); x++)
 	{
 		m_enemies[x]->Update(m_deltatime);
-	}
-}
-
-void Game::Collision()
-{
-	for (unsigned i = 0; i < m_enemies.size(); i++)
-	{
-		if (m_player.GetPlayer().getGlobalBounds().intersects(m_enemies[i]->GetEnemy().getGlobalBounds())) //bullets hit the enemy
-		{
-			m_enemies[i].reset();
-			m_enemies.erase(m_enemies.begin() + i);
-			m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
-		}
 	}
 }
 

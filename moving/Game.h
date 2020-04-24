@@ -18,7 +18,6 @@ private:
 	void PollEvent();
 	void ChangeBackground();
 	void Update();
-	void Collision();
 	void Render();
 private:
 	ResourceHolder m_resourceHolder;
