@@ -1,5 +1,4 @@
 #include "Game.h"
-#include <iostream>
 
 Game::Game(sf::RenderWindow& window)
 	:m_window(window), m_event(sf::Event()), m_deltatime(60.f), m_backgroundScrollSpeed(.5f), m_backgroundScroll(0), m_enemiesSpawner(1)

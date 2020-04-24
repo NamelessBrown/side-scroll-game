@@ -1,6 +1,5 @@
 #include "Enemy.h"
 #include <random>
-#include <iostream>
 
 Enemy::Enemy(sf::Texture& texture)
 {
