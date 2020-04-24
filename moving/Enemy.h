@@ -25,7 +25,6 @@ private:
 	};
 private:
 	sf::Sprite m_sprite;
-	sf::Texture& m_texture;
 
 	ZomebieType m_type;
 	Animation m_animation;
