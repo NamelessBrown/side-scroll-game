@@ -6,7 +6,8 @@
 class Player
 {
 public:
-	Player();
+	Player() = default;
+	Player(sf::Texture& texture);
 
 	const sf::Sprite& GetPlayer() const { return m_sprite; }
 
@@ -21,7 +22,6 @@ private:
 	void Movement(float dt);
 	void CheckBounds();
 private:
-	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 
 	//int m_counter; //Used for the sprite sheet

@@ -1,17 +1,16 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(sf::Texture& texture)
 	:m_speed(4.5f), m_movingLeft(false)
 {
 	//m_counter = 0;
-	m_texture.loadFromFile("Textures/playerSheet.png");
 
 
-	m_animations[int(AnimationIndex::Walking)] = Animation(m_texture, 3, 46 * 3, 50 * 3, 46, 50);
-	m_animations[int(AnimationIndex::Fighting)] = Animation(m_texture, 8, 0, 0, 46, 50);
-	m_animations[int(AnimationIndex::Standing)] = Animation(m_texture, 1, 0, 0, 46, 50);
+	m_animations[int(AnimationIndex::Walking)] = Animation(texture, 3, 46 * 3, 50 * 3, 46, 50);
+	m_animations[int(AnimationIndex::Fighting)] = Animation(texture, 8, 0, 0, 46, 50);
+	m_animations[int(AnimationIndex::Standing)] = Animation(texture, 1, 0, 0, 46, 50);
 
-	m_sprite.setTexture(m_texture);
+	m_sprite.setTexture(texture);
 	m_sprite.setPosition(0.f, 540.f);
 }
 
