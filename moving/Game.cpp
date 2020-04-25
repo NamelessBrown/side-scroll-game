@@ -60,7 +60,7 @@ void Game::Update()
 	ChangeBackground();
 	m_player.Update(m_deltatime);
 
-	for (std::vector<std::unique_ptr<Enemy>>::iterator iter = m_enemies.begin(); iter != m_enemies.end();)
+	for (auto iter = m_enemies.begin(); iter != m_enemies.end();)
 	{
 		if (Collision::AxisAlignedBoundingBox(m_player.GetPlayer(), iter->get()->GetEnemy()))
 		{
