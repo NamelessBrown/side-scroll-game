@@ -6,6 +6,7 @@ Enemy::Enemy(sf::Texture& texture)
 	std::random_device rd;
 	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> m_distribution(0, 4);
+	std::uniform_real_distribution<float> locationDistribution(150.f, 940.f);
 
 	m_type = (ZomebieType)m_distribution(rng);
 
@@ -30,7 +31,7 @@ Enemy::Enemy(sf::Texture& texture)
 
 	m_sprite.setTexture(texture);
 	m_sprite.setScale(-1.0f, 1.0f);
-	m_sprite.setPosition(940.f, 460.f);
+	m_sprite.setPosition(locationDistribution(rng), 460.f);
 }
 
 Enemy::~Enemy()
