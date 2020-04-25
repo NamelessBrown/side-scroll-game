@@ -66,7 +66,7 @@ void Game::Collision()
 {
 	for (auto iter = m_enemies.begin(); iter != m_enemies.end();)
 	{
-		if (Collision::AxisAlignedBoundingBox(m_player.GetPlayer(), iter->get()->GetEnemy()))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift) && Collision::AxisAlignedBoundingBox(m_player.GetPlayer(), iter->get()->GetEnemy()))
 		{
 			iter = m_enemies.erase(iter);
 		}
