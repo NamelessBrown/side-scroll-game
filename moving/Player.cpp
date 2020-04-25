@@ -1,11 +1,8 @@
 #include "Player.h"
 
 Player::Player(sf::Texture& texture)
-	:m_speed(4.5f), m_movingLeft(false)
 {
-	//m_counter = 0;
-
-
+	m_bounds = sf::FloatRect(0.f, 0.f, 25.f, 25.f);
 	m_animations[int(AnimationIndex::Walking)] = Animation(texture, 3, 46 * 3, 50 * 3, 46, 50);
 	m_animations[int(AnimationIndex::Fighting)] = Animation(texture, 8, 0, 0, 46, 50);
 	m_animations[int(AnimationIndex::Standing)] = Animation(texture, 1, 0, 0, 46, 50);

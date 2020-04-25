@@ -9,6 +9,7 @@ Enemy::Enemy(sf::Texture& texture)
 	std::uniform_real_distribution<float> locationDistribution(150.f, 940.f);
 
 	m_type = (ZomebieType)m_distribution(rng);
+	m_bounds = sf::FloatRect(0.f, 0.f, 25.f, 25.f);
 
 	switch (m_type)
 	{
