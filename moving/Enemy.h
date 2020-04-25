@@ -15,7 +15,6 @@ public:
 	~Enemy();
 
 	const sf::Sprite& GetEnemy() const { return m_sprite; }
-	const sf::FloatRect& GetBounds() const { return m_bounds; }
 
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
@@ -26,7 +25,6 @@ private:
 	};
 private:
 	sf::Sprite m_sprite;
-	sf::FloatRect m_bounds;
 
 	ZomebieType m_type;
 	Animation m_animation;
