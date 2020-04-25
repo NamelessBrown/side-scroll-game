@@ -18,6 +18,7 @@ public:
 private:
 	void PollEvent();
 	void ChangeBackground();
+	void SpawnEnemy();
 	void Update();
 	void Render();
 private:

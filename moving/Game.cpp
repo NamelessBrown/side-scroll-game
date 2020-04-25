@@ -54,8 +54,17 @@ void Game::ChangeBackground()
 	m_backgroundSprite.setPosition((float)-m_backgroundScroll, 0.f);
 }
 
+void Game::SpawnEnemy()
+{
+	if (m_enemies.empty())
+	{
+		m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
+	}
+}
+
 void Game::Update()
 {
+	SpawnEnemy();
 	PollEvent();
 	ChangeBackground();
 	m_player.Update(m_deltatime);
@@ -66,16 +75,15 @@ void Game::Update()
 		{
 			iter = m_enemies.erase(iter);
 		}
+		else if (iter->get()->GetEnemy().getPosition().x < 1.f)
+		{
+			iter = m_enemies.erase(iter);
+		}
 		else
 		{
 			iter->get()->Update(m_deltatime);
 			iter++;
 		}
-	}
-
-	if (m_enemies.empty())
-	{
-		m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
 	}
 
 }
