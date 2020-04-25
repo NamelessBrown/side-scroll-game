@@ -62,13 +62,8 @@ void Game::SpawnEnemy()
 	}
 }
 
-void Game::Update()
+void Game::Collision()
 {
-	SpawnEnemy();
-	PollEvent();
-	ChangeBackground();
-	m_player.Update(m_deltatime);
-
 	for (auto iter = m_enemies.begin(); iter != m_enemies.end();)
 	{
 		if (Collision::AxisAlignedBoundingBox(m_player.GetPlayer(), iter->get()->GetEnemy()))
@@ -85,7 +80,15 @@ void Game::Update()
 			iter++;
 		}
 	}
+}
 
+void Game::Update()
+{
+	SpawnEnemy();
+	PollEvent();
+	ChangeBackground();
+	m_player.Update(m_deltatime);
+	Collision();
 }
 
 void Game::Render()
