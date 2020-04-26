@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include <SFML/Graphics.hpp>
+#include <sstream>
 #include "Player.h"
 #include "Enemy.h"
 #include "ResourceHolder.h"

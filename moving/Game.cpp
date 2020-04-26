@@ -7,8 +7,7 @@ Game::Game(sf::RenderWindow& window)
 	m_backgroundSprite.setTexture(m_resourceHolder.getTexture("Textures/gameBack.jpg"));
 	m_backgroundSprite.setPosition(0.f, 0.f);
 
-	m_text.setFont(m_resourceHolder.getFont("Font/Zombies.ttf"));
-	m_text.setString("This is a test string for strings");
+	m_text.setFont(m_resourceHolder.getFont("Font/legalv2.ttf"));
 
 	m_sound.setBuffer(m_resourceHolder.getSound("Sound/attack.wav"));
 
@@ -82,6 +81,7 @@ void Game::Collision()
 		}
 		else if (iter->get()->GetEnemy().getPosition().x < 1.f)
 		{
+			m_player.LostHp(iter->get()->GetAttackDamage());
 			iter = m_enemies.erase(iter);
 		}
 		else
@@ -94,6 +94,10 @@ void Game::Collision()
 
 void Game::Update()
 {
+	std::stringstream ss;
+	ss << "Health: " << m_player.GetHealth() << '\n';
+	m_text.setString(ss.str());
+
 	SpawnEnemy();
 	PollEvent();
 	ChangeBackground();
