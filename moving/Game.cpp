@@ -10,6 +10,8 @@ Game::Game(sf::RenderWindow& window)
 	m_text.setFont(m_resourceHolder.getFont("Font/Zombies.ttf"));
 	m_text.setString("This is a test string for strings");
 
+	m_sound.setBuffer(m_resourceHolder.getSound("Sound/attack.wav"));
+
 	m_player = Player(m_resourceHolder.getTexture("Textures/playerSheet.png"));
 
 	for (int i = 0; i < m_enemiesSpawner; i++)
@@ -72,6 +74,11 @@ void Game::Collision()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift) && Collision::AxisAlignedBoundingBox(m_player.GetPlayer(), iter->get()->GetEnemy()))
 		{
 			iter = m_enemies.erase(iter);
+
+			if (m_sound.getStatus() == sf::Sound::Status::Stopped)
+			{
+				m_sound.play();
+			}
 		}
 		else if (iter->get()->GetEnemy().getPosition().x < 1.f)
 		{

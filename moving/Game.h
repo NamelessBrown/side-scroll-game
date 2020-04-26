@@ -30,6 +30,7 @@ private:
 	sf::Sprite m_backgroundSprite;
 	sf::Clock m_clock;
 	sf::Text m_text;
+	sf::Sound m_sound;
 
 	float m_deltatime;
 	double m_backgroundScroll;
