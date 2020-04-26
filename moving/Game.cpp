@@ -7,6 +7,9 @@ Game::Game(sf::RenderWindow& window)
 	m_backgroundSprite.setTexture(m_resourceHolder.getTexture("Textures/gameBack.jpg"));
 	m_backgroundSprite.setPosition(0.f, 0.f);
 
+	m_text.setFont(m_resourceHolder.getFont("Font/Zombies.ttf"));
+	m_text.setString("This is a test string for strings");
+
 	m_player = Player(m_resourceHolder.getTexture("Textures/playerSheet.png"));
 
 	for (int i = 0; i < m_enemiesSpawner; i++)
@@ -102,6 +105,8 @@ void Game::Render()
 	{
 		m_enemies[x]->Render(m_window);
 	}
+
+	m_window.draw(m_text);
 
 	m_window.display();
 }

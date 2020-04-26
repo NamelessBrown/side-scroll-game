@@ -29,6 +29,7 @@ private:
 	sf::Event m_event;
 	sf::Sprite m_backgroundSprite;
 	sf::Clock m_clock;
+	sf::Text m_text;
 
 	float m_deltatime;
 	double m_backgroundScroll;
