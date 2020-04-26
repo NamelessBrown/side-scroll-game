@@ -10,6 +10,11 @@ Player::Player(sf::Texture& texture)
 	m_sprite.setPosition(0.f, 540.f);
 }
 
+void Player::LostHp(int damage)
+{
+	m_health -= damage;
+}
+
 void Player::Update(float dt)
 {
 	Movement(dt);

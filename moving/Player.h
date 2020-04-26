@@ -10,7 +10,9 @@ public:
 	Player(sf::Texture& texture);
 
 	const sf::Sprite& GetPlayer() const { return m_sprite; }
+	const int& GetHealth() const { return m_health; }
 
+	void LostHp(int damage);
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
 private:
@@ -25,6 +27,7 @@ private:
 	sf::Sprite m_sprite;
 
 	//int m_counter; //Used for the sprite sheet
+	int m_health = 100;
 	float m_speed  = 4.5f;
 	bool m_movingLeft = false;
 
