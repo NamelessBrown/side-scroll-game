@@ -6,7 +6,7 @@ Enemy::Enemy(sf::Texture& texture)
 	std::random_device rd;
 	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> m_distribution(0, 4);
-	std::uniform_real_distribution<float> locationDistribution(150.f, 940.f);
+	std::uniform_real_distribution<float> locationDistribution(1100.f, 1240.f);
 
 	m_type = (ZomebieType)m_distribution(rng);
 
@@ -14,18 +14,28 @@ Enemy::Enemy(sf::Texture& texture)
 	{
 	case ZomebieType::handWalker:
 		m_animation = Animation(texture, 4, 0, 0, 128, 128);
+		m_attackDamage = 25;
+		m_speed = 2.2f;
 		break;
 	case ZomebieType::fat:
 		m_animation = Animation(texture, 4, 0, 128, 128, 128);
+		m_attackDamage = 75;
+		m_speed = 1.2f;
 		break;
 	case ZomebieType::skinny:
 		m_animation = Animation(texture, 4, 0, 128 * 2, 128, 128);
+		m_attackDamage = 10;
+		m_speed = 4.2f;
 		break;
 	case ZomebieType::oneManJand:
 		m_animation = Animation(texture, 4, 0, 128 * 3, 128, 128);
+		m_attackDamage = 35;
+		m_speed = 3.2f;
 		break;
 	default:
 		m_animation = Animation(texture, 4, 0, 0, 128, 128);
+		m_attackDamage = 25;
+		m_speed = 2.2f;
 		break;
 	}
 
@@ -41,7 +51,7 @@ Enemy::~Enemy()
 
 void Enemy::Update(float dt)
 {
-	m_sprite.move(-2.2f * dt, 0);
+	m_sprite.move(-m_speed * dt, 0);
 	m_animation.Update(dt);
 	m_animation.Apply(m_sprite);
 }

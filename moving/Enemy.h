@@ -15,6 +15,7 @@ public:
 	~Enemy();
 
 	const sf::Sprite& GetEnemy() const { return m_sprite; }
+	const int& GetAttackDamage() const { return m_attackDamage; }
 
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
@@ -25,6 +26,9 @@ private:
 	};
 private:
 	sf::Sprite m_sprite;
+
+	float m_speed;
+	int m_attackDamage;
 
 	ZomebieType m_type;
 	Animation m_animation;
