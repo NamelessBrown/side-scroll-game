@@ -32,6 +32,7 @@ private:
 	sf::Clock m_clock;
 	sf::Text m_text;
 	sf::Sound m_sound;
+	sf::Music m_music;
 
 	float m_deltatime;
 	double m_backgroundScroll;

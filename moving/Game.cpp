@@ -17,6 +17,10 @@ Game::Game(sf::RenderWindow& window)
 	{
 		m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
 	}
+
+	m_music.openFromFile("Sound/BlownAway.ogg");
+	m_music.setLoop(true);
+	m_music.play();
 }
 
 Game::~Game()
