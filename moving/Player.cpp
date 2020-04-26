@@ -4,6 +4,7 @@ Player::Player(sf::Texture& texture)
 {
 	m_animations[int(AnimationIndex::Walking)] = Animation(texture, 3, 46 * 3, 50 * 3, 46, 50);
 	m_animations[int(AnimationIndex::Fighting)] = Animation(texture, 4, 46 * 2, 50 * 2, 46, 50);
+	m_animations[int(AnimationIndex::FightingLeft)] = Animation(texture, 4, 46, 50, 46, 50);
 	m_animations[int(AnimationIndex::Standing)] = Animation(texture, 1, 0, 0, 46, 50);
 
 	m_sprite.setTexture(texture);
@@ -61,6 +62,10 @@ void Player::Movement(float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
 	{
 		m_currentAnimation = AnimationIndex::Fighting;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	{
+		m_currentAnimation = AnimationIndex::FightingLeft;
 	}
 
 }
