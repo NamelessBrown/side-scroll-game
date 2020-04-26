@@ -38,22 +38,19 @@ sf::Font& ResourceHolder::getFont(std::string path)
 }
 
 //No error checking on the buffer!
-sf::Sound& ResourceHolder::getSound(std::string path)
+sf::SoundBuffer& ResourceHolder::getSound(std::string path)
 {
-    sf::SoundBuffer buffer;
-    buffer.loadFromFile(path);
-
-    const auto& pairFound = m_sounds.find(path);
+    auto pairFound = m_sounds.find(path);
     if (pairFound != m_sounds.end())
     {
-
         return pairFound->second;
     }
     else
     {
-        auto& sound = m_sounds[path];
-        sound.setBuffer(buffer);
-        return sound;
+
+        auto& sBuffer = m_sounds[path];
+        sBuffer.loadFromFile(path);
+        return sBuffer;
     }
 }
 

@@ -12,11 +12,11 @@ public:
 
 	sf::Texture& getTexture(std::string path);
 	sf::Font& getFont(std::string path);
-	sf::Sound& getSound(std::string path);
+	sf::SoundBuffer& getSound(std::string path);
 
 private:
 	std::map<std::string, sf::Texture> m_textures;
 	std::map<std::string, sf::Font> m_fonts;
-	std::map<std::string, sf::Sound> m_sounds;
+	std::map<std::string, sf::SoundBuffer> m_sounds;
 };
 
