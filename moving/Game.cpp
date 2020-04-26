@@ -3,7 +3,7 @@
 Game::Game(sf::RenderWindow& window)
 	:m_window(window), m_event(sf::Event()), m_deltatime(60.f), m_backgroundScrollSpeed(.5f), m_backgroundScroll(0), m_enemiesSpawner(1)
 {
-
+	m_gameOver = false;
 	m_backgroundSprite.setTexture(m_resourceHolder.getTexture("Textures/gameBack.jpg"));
 	m_backgroundSprite.setPosition(0.f, 0.f);
 
@@ -31,7 +31,7 @@ Game::~Game()
 
 void Game::Run()
 {
-	while (m_window.isOpen())
+	while (m_window.isOpen() && !m_gameOver)
 	{
 		m_deltatime = m_clock.restart().asSeconds() * 60.f;
 		Update();
@@ -94,6 +94,11 @@ void Game::Collision()
 
 void Game::Update()
 {
+	if (m_player.GetHealth() < 0)
+	{
+		m_gameOver = true;
+	}
+
 	std::stringstream ss;
 	ss << "Health: " << m_player.GetHealth() << '\n';
 	m_text.setString(ss.str());

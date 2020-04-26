@@ -37,6 +37,7 @@ private:
 	double m_backgroundScroll;
 	double m_backgroundScrollSpeed;
 	int m_enemiesSpawner;
+	bool m_gameOver;
 
 	Player m_player;
 	std::vector<std::unique_ptr<Enemy>> m_enemies;
