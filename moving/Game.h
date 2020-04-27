@@ -9,6 +9,11 @@
 #include "ResourceHolder.h"
 #include "Collision.h"
 
+enum class GameState
+{
+	title, playing, paused, gameOver
+};
+
 class Game
 {
 public:
@@ -20,6 +25,7 @@ private:
 	void PollEvent();
 	void ChangeBackground();
 	void SpawnEnemy();
+	void HandleStates();
 	void Collision();
 	void Update();
 	void Render();
@@ -42,5 +48,6 @@ private:
 
 	Player m_player;
 	std::vector<std::unique_ptr<Enemy>> m_enemies;
+	GameState m_state;
 };
 

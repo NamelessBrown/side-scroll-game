@@ -8,19 +8,18 @@ Game::Game(sf::RenderWindow& window)
 	m_backgroundSprite.setPosition(0.f, 0.f);
 
 	m_text.setFont(m_resourceHolder.getFont("Font/legalv2.ttf"));
+	m_text.setFillColor(sf::Color::Black);
 
 	m_sound.setBuffer(m_resourceHolder.getSound("Sound/attack.wav"));
 
 	m_player = Player(m_resourceHolder.getTexture("Textures/playerSheet.png"));
-
-	for (int i = 0; i < m_enemiesSpawner; i++)
-	{
-		m_enemies.emplace_back(new Enemy(m_resourceHolder.getTexture("Textures/zombies.png")));
-	}
+	m_player.Update(m_deltatime);
 
 	m_music.openFromFile("Sound/BlownAway.ogg");
 	m_music.setLoop(true);
 	m_music.play();
+	
+	m_state = GameState::title;
 }
 
 Game::~Game()
@@ -35,7 +34,7 @@ Game::~Game()
 
 void Game::Run()
 {
-	while (m_window.isOpen() && !m_gameOver)
+	while (m_window.isOpen())
 	{
 		m_deltatime = m_clock.restart().asSeconds() * 60.f;
 		Update();
@@ -70,6 +69,68 @@ void Game::SpawnEnemy()
 	}
 }
 
+void Game::HandleStates()
+{
+	std::stringstream ss;
+
+	switch (m_state)
+	{
+	case GameState::title:
+		ss.str(" ");
+		ss << "Press Enter to play!\n";
+		m_text.setString(ss.str());
+		m_text.setPosition(250.f, 250.f);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		{
+			m_player.RegainHp();
+			m_state = GameState::playing;
+		}
+
+		break;
+	case GameState::playing:
+		ss.str(" ");
+		ss << "Health: " << m_player.GetHealth() << '\n';
+		ss << "Press 1 to pause! " << '\n';
+		m_text.setString(ss.str());
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+		{
+			m_state = GameState::paused;
+		}
+
+		if (m_player.GetHealth() < 0)
+		{
+			m_state = GameState::gameOver;
+		}
+
+		break;
+		case GameState::paused:
+			ss.str(" ");
+			ss << "Health: " << m_player.GetHealth() << '\n';
+			ss << "Press Shift to play! " << '\n';
+			m_text.setString(ss.str());
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+			{
+				m_state = GameState::playing;
+			}
+
+		break;
+	case GameState::gameOver:
+		ss.str(" ");
+		ss << "Play again. You died. You are bad. Get great again." << '\n';
+		ss << "Press right shift to play! " << '\n';
+		m_text.setString(ss.str());
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
+		{
+			m_state = GameState::title;
+		}
+		break;
+	}
+}
+
 void Game::Collision()
 {
 	for (auto iter = m_enemies.begin(); iter != m_enemies.end();)
@@ -99,20 +160,16 @@ void Game::Collision()
 
 void Game::Update()
 {
-	if (m_player.GetHealth() < 0)
-	{
-		m_gameOver = true;
-	}
-
-	std::stringstream ss;
-	ss << "Health: " << m_player.GetHealth() << '\n';
-	m_text.setString(ss.str());
-
-	SpawnEnemy();
+	HandleStates();
 	PollEvent();
-	ChangeBackground();
-	m_player.Update(m_deltatime);
-	Collision();
+
+	if (m_state == GameState::playing)
+	{
+		SpawnEnemy();
+		ChangeBackground();
+		m_player.Update(m_deltatime);
+		Collision();
+	}
 }
 
 void Game::Render()
