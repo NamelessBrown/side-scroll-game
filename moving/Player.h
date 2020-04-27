@@ -12,6 +12,7 @@ public:
 	const sf::Sprite& GetPlayer() const { return m_sprite; }
 	const int& GetHealth() const { return m_health; }
 
+	void RegainHp();
 	void LostHp(int damage);
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
